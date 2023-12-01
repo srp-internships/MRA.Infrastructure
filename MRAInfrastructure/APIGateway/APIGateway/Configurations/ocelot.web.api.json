@@ -1,16 +1,6 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/auth/login",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "localhost",
-          "Port": 5080
-        }
-      ],
-      "UpstreamPathTemplate": "/identity/auth/login",
-      "UpstreamHttpMethod": [ "POST" ]
     }
   ]
 }
