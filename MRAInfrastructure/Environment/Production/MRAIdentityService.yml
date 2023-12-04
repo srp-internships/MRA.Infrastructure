@@ -24,7 +24,10 @@ spec:
         - name: ASPNETCORE_URLS
           value: http://+:80
         - name: AzureClientSecretValue
-          value: i-I8Q~L4udn-BskymX_rQcnwfltWDUkWRaSz6aWo
+          valueFrom:
+            secretKeyRef:
+              name: azure-client-secret-value
+              key: secretValue
         - name: CS
           value: Server=192.168.1.80,1433;User ID=SA;Password=Sdfk&^^&!1231JS%%^@1112;Database=IdentityTest;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=false;TrustServerCertificate=True;
 ---
