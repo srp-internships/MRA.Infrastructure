@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mra-identity-api-deployment
+  labels:
+    app: mra-identity-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-identity-api
+  template:
+    metadata:
+      labels:
+        app: mra-identity-api
+    spec:
+      containers:
+      - name: mra-identity-api
+        image: adheem/mra-identity-api:0.0.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: AzureClientSecretValue
+          value: i-I8Q~L4udn-BskymX_rQcnwfltWDUkWRaSz6aWo
+        - name: CS
+          value: Server=192.168.1.80,1433;User ID=SA;Password=Sdfk&^^&!1231JS%%^@1112;Database=IdentityTest;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=false;TrustServerCertificate=True;
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-identity-api-service
+  labels:
+    app: mra-identity-api
+spec:
+  selector:
+    app: mra-identity-api
+  ports:
+    - name: http
+      port: 5080
+      targetPort: 80
+      nodePort: 30700
+      protocol: TCP
+  type: NodePort

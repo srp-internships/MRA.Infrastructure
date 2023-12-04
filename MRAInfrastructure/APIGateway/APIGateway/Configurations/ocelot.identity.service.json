@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/login",
@@ -17,8 +17,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/register",
@@ -29,8 +29,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/verify",
@@ -41,8 +41,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/verifyemail",
@@ -53,8 +53,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/refresh",
@@ -65,8 +65,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/changepassword",
@@ -77,8 +77,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/googlecode",
@@ -89,8 +89,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/isavailableuserphonenumber/{phoneNumber}",
@@ -101,8 +101,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/auth/resetpassword",
@@ -113,8 +113,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/claims",
@@ -125,8 +125,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/api/claims/{slug}",
@@ -137,8 +137,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile",
@@ -149,8 +149,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/AddSkills",
@@ -161,8 +161,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetUserSkills",
@@ -173,8 +173,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetAllSkills",
@@ -185,8 +185,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/RemoveUserSkill/{skill}",
@@ -197,8 +197,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/CreateEducationDetai",
@@ -209,8 +209,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/DeleteEducationDetail/{id}",
@@ -221,8 +221,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/UpdateEducationDetail",
@@ -233,8 +233,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetEducationByUser",
@@ -245,8 +245,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetAllEducations",
@@ -257,8 +257,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/CreateExperienceDetail",
@@ -269,8 +269,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/UpdateExperienceDetail",
@@ -281,8 +281,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/DeleteExperienceDetail/{id}",
@@ -293,8 +293,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetExperiencesByUser",
@@ -305,8 +305,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GetAllExperiences",
@@ -317,8 +317,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Profile/GenerateCV",
@@ -329,8 +329,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Roles",
@@ -341,8 +341,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/Roles/{slug}",
@@ -353,8 +353,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/sms/send_code",
@@ -365,8 +365,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/sms/verify_code",
@@ -377,8 +377,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/User",
@@ -389,8 +389,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/User/{username}",
@@ -401,8 +401,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/User/checkuserdetails/{username}/{phonenumber}/{email}",
@@ -413,8 +413,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/UserRoles",
@@ -425,8 +425,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 5080
+          "Host": "192.168.1.80",
+          "Port": 30700
         }
       ],
       "UpstreamPathTemplate": "/identity/UserRoles/{slug}",
