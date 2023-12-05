@@ -1,6 +1,256 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/applications/downloadcv/{key}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/applications/downloadcv/{key}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/applications",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/applications",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/applications/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/applications/{slug}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/applications/{slug}/update-status",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/applications/{slug}/update-status",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/applications/{slug}/add-note",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/applications/{slug}/add-note",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/categories",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories/training",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/categories/training",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories/internships",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/categories/internships",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories/job",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/categories/job",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/categories/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/categories/{slug}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/cv",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/cv",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/internships",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/internships",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/internships/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/internships/{slug}",
+      "UpstreamHttpMethod": [ "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/internships/{slug}/tags",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/internships/{slug}/tags",
+      "UpstreamHttpMethod": [ "POST", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jobs",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/jobs",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jobs/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/jobs/{slug}",
+      "UpstreamHttpMethod": [ "PUT", "GET", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/jobs/{slug}/tags",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/jobs/{slug}/tags",
+      "UpstreamHttpMethod": [ "POST", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/sms",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/sms",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/tags/{slug}/{tags}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/tags/{slug}/{tags}",
+      "UpstreamHttpMethod": [ "POST", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/trainings/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/trainings/{slug}",
+      "UpstreamHttpMethod": [ "DELETE", "GET", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/trainings",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/trainings",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
     }
   ]
 }
