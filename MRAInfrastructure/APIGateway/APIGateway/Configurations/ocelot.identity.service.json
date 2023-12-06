@@ -1,0 +1,436 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/auth/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/login",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/register",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/verify",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/verify",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/verifyemail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/verifyemail",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/refresh",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/refresh",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/changepassword",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/changepassword",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/googlecode",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/googlecode",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/isavailableuserphonenumber/{phoneNumber}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/isavailableuserphonenumber/{phoneNumber}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth/resetpassword",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/auth/resetpassword",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/claims",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/claims",
+      "UpstreamHttpMethod": [ "POST", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/claims/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/api/claims/{slug}",
+      "UpstreamHttpMethod": [ "PUT", "DELETE", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile",
+      "UpstreamHttpMethod": [ "PUT", "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/AddSkills",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/AddSkills",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetUserSkills",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetUserSkills",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetAllSkills",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetAllSkills",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/RemoveUserSkill/{skill}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/RemoveUserSkill/{skill}",
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/CreateEducationDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/CreateEducationDetai",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/DeleteEducationDetail/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/DeleteEducationDetail/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/UpdateEducationDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/UpdateEducationDetail",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetEducationByUser",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetEducationByUser",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetAllEducations",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetAllEducations",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/CreateExperienceDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/CreateExperienceDetail",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/UpdateExperienceDetail",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/UpdateExperienceDetail",
+      "UpstreamHttpMethod": [ "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/DeleteExperienceDetail/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/DeleteExperienceDetail/{id}",
+      "UpstreamHttpMethod": [ "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetExperiencesByUser",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetExperiencesByUser",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GetAllExperiences",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GetAllExperiences",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Profile/GenerateCV",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Profile/GenerateCV",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Roles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Roles",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Roles/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/Roles/{slug}",
+      "UpstreamHttpMethod": [ "GET", "PUT", "DELETE" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/sms/send_code",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/sms/send_code",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/sms/verify_code",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/sms/verify_code",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/User",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/User",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/{username}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/User/{username}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/User/checkuserdetails/{username}/{phonenumber}/{email}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/User/checkuserdetails/{username}/{phonenumber}/{email}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/UserRoles",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/UserRoles",
+      "UpstreamHttpMethod": [ "GET", "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/UserRoles/{slug}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.80",
+          "Port": 30700
+        }
+      ],
+      "UpstreamPathTemplate": "/identity/UserRoles/{slug}",
+      "UpstreamHttpMethod": [ "GET", "DELETE" ]
+    }
+  ]
+}

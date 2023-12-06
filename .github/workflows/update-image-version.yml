@@ -1,0 +1,34 @@
+name: Repository Dispatch
+on:
+  repository_dispatch:
+    types: [update]
+jobs:
+  myEvent:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Set up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+        
+      - name: Update the Image Version
+        run: |
+          sed -Ei "s/image: adheem\/mra-identity-api:[^\"]+/image: adheem\/mra-identity-api:${{ github.event.client_payload.version }}/g" MRAIdentityService.yml
+          sed -Ei "s/image: adheem\/mra-web-api:[^\"]+/image: adheem\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
+          git add .
+          git status
+        working-directory: ./MRAInfrastructure/Environment/Production
+      
+      - name: Commit Changes
+        run: |
+          git commit -m "Auto commit - ${{ github.sha }}"
+          git status
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}

@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mra-argo-application
+  namespace: argocd
+spec: 
+  project: default
+
+  source:
+    repoUrl: https://github.com/srp-internships/MRA-Jobs.git
+    targetRevision: HEAD
+    path: src
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mra
+  
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    
