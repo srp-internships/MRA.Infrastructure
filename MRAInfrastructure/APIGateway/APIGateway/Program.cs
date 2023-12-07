@@ -8,13 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Configuration.SetBasePath(builder.Environment.ContentRootPath);
+builder.Configuration.SetBasePath(Path.Combine(builder.Environment.ContentRootPath, "Configurations"));
 
-var configurationFiles = Directory.GetFiles("Configurations", "*.json");
-foreach (var configFile in configurationFiles)
-{
-    builder.Configuration.AddJsonFile(configFile, optional: false, reloadOnChange: true);
-}
+builder.Configuration.AddJsonFile("ocelot.web.api.json", optional: false, reloadOnChange: true).AddJsonFile("ocelot.identity.service.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddOcelot();
 
@@ -29,6 +25,5 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// Ocelot setup step #2
 app.UseOcelot().Wait();
 app.Run();
