@@ -11,8 +11,8 @@ jobs:
       
       - name: Set up Git
         run: |
-          git config user.name "adheeeem"
-          git config user.email "sherman.peabody99@gmail.com"
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
         
       - name: Update the Image Version
         run: |
