@@ -11,7 +11,7 @@ jobs:
       
       - name: Set up Git
         run: |
-          git config user.name "adheem"
+          git config user.name "adheeeem"
           git config user.email "sherman.peabody99@gmail.com"
         
       - name: Update the Image Version
