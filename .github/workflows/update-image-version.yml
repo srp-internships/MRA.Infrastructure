@@ -4,6 +4,8 @@ on:
     types: [update]
 jobs:
   versionUpdater:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
