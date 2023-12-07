@@ -12,7 +12,7 @@ spec:
     path: src
   destination:
     server: https://kubernetes.default.svc
-    namespace: mra
+    namespace: MRAInfrastructure
   
   syncPolicy:
     automated:
