@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Configuration.SetBasePath(Path.Combine(builder.Environment.ContentRootPath, "Configurations"));
 
-builder.Configuration.AddJsonFile("ocelot.web.api.json", optional: false, reloadOnChange: true).AddJsonFile("ocelot.identity.service.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddOcelot();
 
