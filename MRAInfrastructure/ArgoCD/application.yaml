@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoUrl: https://github.com/srp-internships/MRA-Jobs.git
+    repoUrl: https://github.com/srp-internships/MRAInfrastructure.git
     targetRevision: HEAD
     path: src
   destination:
