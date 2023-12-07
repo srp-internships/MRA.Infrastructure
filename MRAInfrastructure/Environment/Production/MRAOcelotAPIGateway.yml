@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ocelot-api-gateway
-        image: adheem/ocelot-api-gateway:0.0.3
+        image: adheem/ocelot-api-gateway:0.0.4
         imagePullPolicy: Always
         ports:
         - containerPort: 80
