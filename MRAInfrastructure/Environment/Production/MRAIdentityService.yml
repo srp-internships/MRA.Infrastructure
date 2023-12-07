@@ -45,7 +45,7 @@ spec:
     app: mra-identity-api
   ports:
     - name: http
-      port: 5080
+      port: 5070
       targetPort: 80
       nodePort: 30700
       protocol: TCP
