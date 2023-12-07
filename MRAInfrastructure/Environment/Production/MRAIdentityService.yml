@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mra-identity-api
-        image: adheem/mra-identity-api: v0.4.0
+        image: adheem/mra-identity-api:v0.5.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
