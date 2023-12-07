@@ -36,13 +36,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mra-identity-api-service
+  name: mra-web-api-service
   namespace: mra
   labels:
-    app: mra-identity-api
+    app: mra-web-api
 spec:
   selector:
-    app: mra-identity-api
+    app: mra-web-api
   ports:
     - name: http
       port: 5080
