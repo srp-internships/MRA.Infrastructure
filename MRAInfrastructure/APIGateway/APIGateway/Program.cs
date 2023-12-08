@@ -8,8 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// step 1:
 builder.Configuration.SetBasePath(Path.Combine(builder.Environment.ContentRootPath, "Configurations"));
 
+// step 2:
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddOcelot();
@@ -25,5 +27,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+
+// step 3:
 app.UseOcelot().Wait();
 app.Run();
