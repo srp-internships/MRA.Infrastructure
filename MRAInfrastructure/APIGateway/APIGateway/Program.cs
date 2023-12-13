@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Configuration;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +16,20 @@ builder.Configuration.SetBasePath(Path.Combine(builder.Environment.ContentRootPa
 // step 2:
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
+var corsAllowedHosts = builder.Configuration.GetSection("CORS").Get<string[]>();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CORS_POLICY", policyConfig =>
+    {
+        policyConfig.WithOrigins(corsAllowedHosts)
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddOcelot();
+
+
 
 var app = builder.Build();
 
@@ -26,7 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("CORS_POLICY");
 
 // step 3:
 app.UseOcelot().Wait();
