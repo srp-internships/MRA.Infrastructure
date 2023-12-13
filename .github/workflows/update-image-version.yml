@@ -18,8 +18,8 @@ jobs:
         
       - name: Update the Image Version
         run: |
-          sed -Ei "s/image: adheem\/mra-identity-api:[^\"]+/image: adheem\/mra-identity-api:${{ github.event.client_payload.version }}/g" MRAIdentityService.yml
-          sed -Ei "s/image: adheem\/mra-web-api:[^\"]+/image: adheem\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-identity-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-identity-api:${{ github.event.client_payload.version }}/g" MRAIdentityService.yml
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-web-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
           git add .
           git status
         working-directory: ./MRAInfrastructure/Environment/Production
