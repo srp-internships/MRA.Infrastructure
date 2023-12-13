@@ -44,5 +44,9 @@ spec:
   selector:
     app: mra-identity-api
   ports:
-    - port: 80
+    - name: http
+      port: 5070
       targetPort: 80
+      nodePort: 30700
+      protocol: TCP
+  type: NodePort
