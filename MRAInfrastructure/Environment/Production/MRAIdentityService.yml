@@ -49,4 +49,3 @@ spec:
       targetPort: 80
       nodePort: 30700
       protocol: TCP
-  type: NodePort
