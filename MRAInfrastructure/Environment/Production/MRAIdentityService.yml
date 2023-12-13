@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mra-identity-api
-        image: adheem/mra-identity-api:v0.8.0
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.8.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -29,8 +29,6 @@ spec:
             secretKeyRef:
               name: azure-client-secret-value
               key: secretValue
-        - name: CS
-          value: Server=192.168.1.17,1433;User ID=SA;Password=Sdfk&^^&!1231JS%%^@1112;Database=IdentityTest;Trusted_Connection=True;MultipleActiveResultSets=true;Integrated Security=false;TrustServerCertificate=True;
 ---
 
 apiVersion: v1
