@@ -17,13 +17,15 @@ spec:
     spec:
       containers:
       - name: ocelot-api-gateway
-        image: adheem/ocelot-api-gateway:v0.0.4
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
         - name: ASPNETCORE_URLS
           value: http://+:80
+      imagePullSecrets:
+        - name: acr-secret
 ---
 
 apiVersion: v1
