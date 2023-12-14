@@ -477,7 +477,7 @@
           "Port": 30700
         }
       ],
-      "UpstreamPathTemplate": "/identity/Profile/CreateEducationDetai",
+      "UpstreamPathTemplate": "/identity/Profile/CreateEducationDetail",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
