@@ -1,6 +1,30 @@
 {
   "Routes": [
     {
+      "DownstreamPathTemplate": "/api/hiddenvacancies",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.17",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/hiddenvacancies",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/hiddenvacancies/getapplicationstatus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.17",
+          "Port": 30800
+        }
+      ],
+      "UpstreamPathTemplate": "/webapi/hiddenvacancies/getapplicationstatus",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
       "DownstreamPathTemplate": "/api/applications/downloadcv/{key}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -481,7 +505,7 @@
       "UpstreamHttpMethod": [ "PUT" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Profile/GetEducationByUser",
+      "DownstreamPathTemplate": "/api/Profile/GetEducationsByUser",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -489,7 +513,7 @@
           "Port": 30700
         }
       ],
-      "UpstreamPathTemplate": "/identity/Profile/GetEducationByUser",
+      "UpstreamPathTemplate": "/identity/Profile/GetEducationsByUser",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
