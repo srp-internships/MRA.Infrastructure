@@ -529,7 +529,7 @@
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
-      "DownstreamPathTemplate": "/api/Profile/CreateExperienceDetail",
+      "DownstreamPathTemplate": "/api/Profile/СreateExperienceDetail",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
