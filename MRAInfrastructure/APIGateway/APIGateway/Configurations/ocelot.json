@@ -9,7 +9,7 @@
           "Port": 30800
         }
       ],
-      "UpstreamPathTemplate": "/webapi/{everything}",
+      "UpstreamPathTemplate": "/jobs/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     },
     {
