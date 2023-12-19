@@ -33,7 +33,7 @@ spec:
         - name: ASPNETCORE_Kestrel__Certificates__Default__Password
           value: ""
         - name: ASPNETCORE_Kestrel__Certificates__Default__Path
-          value: /secrets/tls-cert/app-tls-cert.crt
+          value: /secrets/tls-cert/tls.crt
         - name: ASPNETCORE_URLS
           value: "https://+;http://+"
         - name: ASPNETCORE_HTTPS_PORT
@@ -56,4 +56,4 @@ spec:
   - port: 443
     protocol: TCP
     targetPort: 443
-  type: ClusterIP
+  type: LoadBalancer
