@@ -15,15 +15,29 @@ spec:
       labels:
         app: ocelot-api-gateway
     spec:
+      volumes:
+      - name: srp-app-tls
+        secret:
+          secretName: srp-tls-secret
       containers:
       - name: ocelot-api-gateway
         image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v1.0.3
         imagePullPolicy: Always
         ports:
         - containerPort: 443
+        volumeMounts:
+        - name: srp-app-tls
+          mountPath: /secrets/tls-cert
+          readOnly: true
         env:
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Password
+          value: ""
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Path
+          value: /secrets/tls-cert/app-tls-cert.crt
         - name: ASPNETCORE_URLS
-          value: http://+:80
+          value: "https://+;http://+"
+        - name: ASPNETCORE_HTTPS_PORT
+          value: "443"
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -39,8 +53,7 @@ spec:
   selector:
     app: ocelot-api-gateway
   ports:
-    - name: http
-      port: 8090
-      targetPort: 443
-      protocol: TCP
-  type: LoadBalancer
+  - port: 443
+    protocol: TCP
+    targetPort: 443
+  type: ClusterIP
