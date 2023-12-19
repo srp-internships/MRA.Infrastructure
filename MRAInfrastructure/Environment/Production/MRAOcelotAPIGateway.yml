@@ -33,7 +33,7 @@ spec:
         - name: ASPNETCORE_Kestrel__Certificates__Default__Password
           value: ""
         - name: ASPNETCORE_Kestrel__Certificates__Default__Path
-          value: /secrets/tls-cert/tls.crt
+          value: /secrets/tls-cert/srp_tj.pfx
         - name: ASPNETCORE_URLS
           value: "https://+;http://+"
         - name: ASPNETCORE_HTTPS_PORT
