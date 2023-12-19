@@ -25,15 +25,7 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 443
-        volumeMounts:
-        - name: srp-app-tls
-          mountPath: /secrets/tls-cert
-          readOnly: true
         env:
-        - name: ASPNETCORE_Kestrel__Certificates__Default__Password
-          value: ""
-        - name: ASPNETCORE_Kestrel__Certificates__Default__Path
-          value: /secrets/tls-cert/tls.crt
         - name: ASPNETCORE_URLS
           value: "https://+;http://+"
         - name: ASPNETCORE_HTTPS_PORT
