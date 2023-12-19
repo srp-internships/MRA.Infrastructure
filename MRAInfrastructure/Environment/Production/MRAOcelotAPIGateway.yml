@@ -43,3 +43,4 @@ spec:
       port: 8090
       targetPort: 80
       protocol: TCP
+  type: LoadBalancer
