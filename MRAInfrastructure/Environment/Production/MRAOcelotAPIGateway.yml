@@ -53,7 +53,7 @@ spec:
   selector:
     app: ocelot-api-gateway
   ports:
-  - port: 443
+  - port: 8090
     protocol: TCP
     targetPort: 443
-  type: ClusterIP
+  type: LoadBalancer
