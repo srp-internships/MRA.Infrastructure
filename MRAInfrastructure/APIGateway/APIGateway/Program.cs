@@ -1,9 +1,16 @@
-using Microsoft.Extensions.Configuration;
+using MRA.Configurations.Initializer.Azure.Insight;
+using MRA.Configurations.Initializer.Azure.KeyVault;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
-using Ocelot.Values;
 
 var builder = WebApplication.CreateBuilder(args);
+
+if (builder.Environment.IsProduction())
+{
+    builder.Configuration.ConfigureAzureKeyVault("MraInfrastructure");
+    builder.Configuration.AddAzureAppConfiguration(options => options.Connect("AppConfigConnectionString"));
+    builder.Logging.AddApiApplicationInsights(builder.Configuration);
+}
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -16,7 +23,7 @@ builder.Configuration.SetBasePath(Path.Combine(builder.Environment.ContentRootPa
 // step 2:
 builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 
-var corsAllowedHosts = builder.Configuration.GetSection("CORS").Get<string[]>();
+var corsAllowedHosts = builder.Configuration.GetSection("MraInfrastructure-CORS").Get<string[]>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CORS_POLICY", policyConfig =>
