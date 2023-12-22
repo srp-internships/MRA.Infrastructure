@@ -38,6 +38,11 @@ spec:
           value: "https://+;http://+"
         - name: ASPNETCORE_HTTPS_PORT
           value: "443"
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              name: azure-client-secret-value
+              key: secretValue
       imagePullSecrets:
         - name: acr-secret
 ---
