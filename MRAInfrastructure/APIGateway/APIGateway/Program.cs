@@ -1,3 +1,4 @@
+using MRA.Configurations.Initializer.Azure.AppConfig;
 using MRA.Configurations.Initializer.Azure.Insight;
 using MRA.Configurations.Initializer.Azure.KeyVault;
 using Ocelot.DependencyInjection;
@@ -8,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 if (builder.Environment.IsProduction())
 {
     builder.Configuration.ConfigureAzureKeyVault("MraInfrastructure");
-    builder.Configuration.AddAzureAppConfiguration(options => options.Connect("AppConfigConnectionString"));
+    string appConfigConnectionString = builder.Configuration["AppConfigConnectionString"];
+    builder.Configuration.AddAzureAppConfig(appConfigConnectionString);
     builder.Logging.AddApiApplicationInsights(builder.Configuration);
 }
 
