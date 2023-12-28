@@ -46,6 +46,7 @@ jobs:
 
       - name: Commit Changes
         run: |
+          git checkout -b main
           git commit -m "Auto commit - ${{ github.sha }}"
           git status
 
