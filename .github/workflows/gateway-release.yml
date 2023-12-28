@@ -48,7 +48,7 @@ jobs:
 
       - name: Publish Ocelot Gateway to ACR
         run: |
-          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.GH_TOKEN }}
           docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
 
       - name: Minor version for each merge
