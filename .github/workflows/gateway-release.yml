@@ -33,6 +33,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Configure Git for merge
+        run: |
+          git config pull.rebase false
+    
       - name: Pull latest changes
         run: |
           git pull origin main
