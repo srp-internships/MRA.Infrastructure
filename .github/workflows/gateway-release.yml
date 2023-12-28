@@ -18,6 +18,16 @@ jobs:
           WITH_V: true
           DRY_RUN: true
 
+      - name: build docker image for Ocelot Gateway
+        run: |
+          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
+        working-directory: ./MRAInfrastructure
+
+      - name: Publish Ocelot Gateway to ACR
+        run: |
+          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+
       - name: Set up Git
         run: |
           git config user.name "${{ github.actor }}"
@@ -39,17 +49,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: ${{ github.ref }}
-
-      - name: build docker image for Ocelot Gateway
-        run: |
-          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
-        working-directory: ./MRAInfrastructure
-
-      - name: Publish Ocelot Gateway to ACR
-        run: |
-          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
-          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+          branch: 'main'
 
       - name: Minor version for each merge
         id: taggerFinal
