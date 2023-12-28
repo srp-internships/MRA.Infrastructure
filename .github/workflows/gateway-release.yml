@@ -33,6 +33,10 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
 
+      - name: Pull latest changes
+        run: |
+          git pull origin main
+
       - name: Update the Image Version
         run: |
           sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
@@ -50,7 +54,6 @@ jobs:
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'main'
-          force: false
 
       - name: Minor version for each merge
         id: taggerFinal
