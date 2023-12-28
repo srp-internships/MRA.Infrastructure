@@ -1,0 +1,59 @@
+name: Gateway
+on:
+  push:
+    branches: ["gateway_release"]
+jobs:
+  versionUpdater:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Minor version for each merge
+        id: taggerDryRun
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          WITH_V: true
+          DRY_RUN: true
+      
+      - name: Set up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+        
+      - name: Update the Image Version
+        run: |
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
+          git add .
+          git status
+        working-directory: ./MRAInfrastructure/Environment/Production
+      
+      - name: Commit Changes
+        run: |
+          git commit -m "Auto commit - ${{ github.sha }}"
+          git status
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: build docker image for Ocelot Gateway
+        run: |
+          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
+        working-directory: ./MRAInfrastructure
+
+      - name: Publish Ocelot Gateway to ACR
+        run: |
+          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+
+      - name: Minor version for each merge
+        id: taggerFinal
+        uses: anothrNick/github-tag-action@1.64.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          WITH_V: true
