@@ -1,7 +1,7 @@
 name: Gateway
 on:
   push:
-    branches: ["gateway_release"]
+    branches: [ "gateway_release" ]
 jobs:
   versionUpdater:
     permissions:
@@ -17,19 +17,19 @@ jobs:
         env:
           WITH_V: true
           DRY_RUN: true
-      
+
       - name: Set up Git
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-        
+
       - name: Update the Image Version
         run: |
           sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
           git add .
           git status
         working-directory: ./MRAInfrastructure/Environment/Production
-      
+
       - name: Commit Changes
         run: |
           git commit -m "Auto commit - ${{ github.sha }}"
