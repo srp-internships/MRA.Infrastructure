@@ -18,15 +18,15 @@ jobs:
           WITH_V: true
           DRY_RUN: true
 
-#      - name: build docker image for Ocelot Gateway
-#        run: |
-#          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
-#        working-directory: ./MRAInfrastructure
-#
-#      - name: Publish Ocelot Gateway to ACR
-#        run: |
-#          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
-#          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+      - name: build docker image for Ocelot Gateway
+        run: |
+          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
+        working-directory: ./MRAInfrastructure
+
+      - name: Publish Ocelot Gateway to ACR
+        run: |
+          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
 
       - name: Set up Git
         run: |
