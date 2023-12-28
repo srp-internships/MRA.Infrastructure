@@ -18,28 +18,20 @@ jobs:
           WITH_V: true
           DRY_RUN: true
 
-      - name: build docker image for Ocelot Gateway
-        run: |
-          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
-        working-directory: ./MRAInfrastructure
-
-      - name: Publish Ocelot Gateway to ACR
-        run: |
-          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
-          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+#      - name: build docker image for Ocelot Gateway
+#        run: |
+#          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
+#        working-directory: ./MRAInfrastructure
+#
+#      - name: Publish Ocelot Gateway to ACR
+#        run: |
+#          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+#          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
 
       - name: Set up Git
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-
-      - name: Configure Git for merge
-        run: |
-          git config pull.rebase false
-    
-      - name: Pull latest changes
-        run: |
-          git pull origin main
 
       - name: Update the Image Version
         run: |
