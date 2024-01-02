@@ -50,17 +50,33 @@ jobs:
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'main'
-
-      - name: Pull latest changes
+          
+      - name: Checkout gateway_release
         run: |
-          git checkout gateway_release 
-          git pull origin main --allow-unrelated-histories
+          git checkout gateway_release
+          
+      - name: Update the Image Version
+        run: |         
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
+          git add .
+          git status
+        working-directory: ./MRAInfrastructure/Environment/Production
+
+      - name: Commit Changes
+        run: |
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto commit - ${{ github.sha }}" && git status)
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: 'gateway_release'
+          branch: ${{ github.ref }}
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}
 
       - name: Minor version for each merge
         id: taggerFinal
