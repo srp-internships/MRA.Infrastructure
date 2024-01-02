@@ -48,12 +48,6 @@ jobs:
 
       - name: Pull latest changes
         run: git pull origin main
-
-      - name: Push Changes
-        uses: ad-m/github-push-action@master
-        with:
-            github_token: ${{ secrets.GH_TOKEN }}
-            branch: 'main'
       
       - name: Push Changes
         uses: ad-m/github-push-action@master
