@@ -32,6 +32,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
+          git checkout main
 
       - name: Update the Image Version
         run: |
@@ -42,7 +43,6 @@ jobs:
 
       - name: Commit Changes
         run: |
-          git checkout main
           git commit -m "Auto commit - ${{ github.sha }}"
           git status
 
