@@ -57,6 +57,12 @@ jobs:
           git checkout gateway_release 
           git pull origin main
 
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: 'gateway_release'
+
       - name: Minor version for each merge
         id: taggerFinal
         uses: anothrNick/github-tag-action@1.64.0
