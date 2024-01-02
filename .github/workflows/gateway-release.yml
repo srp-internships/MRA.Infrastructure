@@ -45,15 +45,16 @@ jobs:
         run: |
           git commit -m "Auto commit - ${{ github.sha }}"
           git status
-
-      - name: Pull latest changes
-        run: git pull origin main
       
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'main'
+      - name: Pull latest changes
+        run:
+          git checkout gateway_release 
+          git pull origin main
 
       - name: Minor version for each merge
         id: taggerFinal
