@@ -32,7 +32,7 @@ jobs:
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
-          git checkout main
+          git checkout gateway_release
 
       - name: Update the Image Version
         run: |
@@ -49,19 +49,21 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: 'main'
+          branch: 'gateway_release'
 
-      - name: Pull latest changes
+      - name: Checkout main branch
         run: |
-          git checkout gateway_release
-          git config pull.rebase false
-          git pull origin main --allow-unrelated-histories
+          git checkout main
+
+      - name: Merge gateway_release into main
+        run: |
+          git merge gateway_release --allow-unrelated-histories
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: 'gateway_release'
+          branch: 'main'
 
       - name: Minor version for each merge
         id: taggerFinal
@@ -69,3 +71,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           WITH_V: true
+      
