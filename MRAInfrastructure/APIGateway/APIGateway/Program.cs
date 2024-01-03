@@ -3,6 +3,7 @@ using MRA.Configurations.Initializer.Azure.Insight;
 using MRA.Configurations.Initializer.Azure.KeyVault;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -41,6 +42,12 @@ builder.Services.AddOcelot();
 
 
 var app = builder.Build();
+
+
+
+var logger = app.Services.GetRequiredService<ILogger<Program>>();
+logger.LogWarning("Protocol", ServicePointManager.SecurityProtocol);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
