@@ -55,7 +55,7 @@ jobs:
         run: |
           git checkout gateway_release
           git config pull.rebase false
-          git pull origin main
+          git pull origin main --allow-unrelated-histories
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
