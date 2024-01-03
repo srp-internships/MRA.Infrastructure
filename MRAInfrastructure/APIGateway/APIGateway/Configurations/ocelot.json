@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "192.168.1.17",
-          "Port": 30800
+          "Host": "10.98.171.206",
+          "Port": 5080
         }
       ],
       "UpstreamPathTemplate": "/jobs/{everything}",
@@ -17,8 +17,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "192.168.1.17",
-          "Port": 30700
+          "Host": "10.99.36.181",
+          "Port": 5070
         }
       ],
       "UpstreamPathTemplate": "/identity/{everything}",
