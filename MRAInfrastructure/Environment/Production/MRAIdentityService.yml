@@ -47,6 +47,4 @@ spec:
     - name: http
       port: 5070
       targetPort: 80
-      nodePort: 30700
       protocol: TCP
-  type: NodePort
