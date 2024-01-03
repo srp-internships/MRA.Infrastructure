@@ -44,13 +44,13 @@ jobs:
       - name: Commit Changes
         run: |
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto commit - ${{ github.sha }}" && git status)
-      
+
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'main'
-          
+
       - name: Pull latest changes
         run: |
           git checkout gateway_release 
