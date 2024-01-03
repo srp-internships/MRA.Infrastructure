@@ -21,7 +21,7 @@ spec:
           secretName: srp-tls-cert-secret
       containers:
       - name: ocelot-api-gateway
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.7.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.8.0
         imagePullPolicy: Always
         ports:
         - containerPort: 443
