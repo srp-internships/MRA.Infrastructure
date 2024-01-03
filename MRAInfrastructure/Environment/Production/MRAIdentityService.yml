@@ -22,8 +22,6 @@ spec:
         ports:
         - containerPort: 80
         env:
-        - name: ASPNETCORE_URLS
-          value: http://+:80
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
