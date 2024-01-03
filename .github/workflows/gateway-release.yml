@@ -51,6 +51,7 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'gateway_release'
 
+
       - name: Checkout main branch
         run: |
           git checkout main
