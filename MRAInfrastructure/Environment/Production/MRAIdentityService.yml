@@ -33,7 +33,8 @@ spec:
         - name: acr-secret
       dnsConfig:
         nameservers:
-          - 127.0.0.1 # this is an example
+          - 8.8.8.8 
+          - 8.8.4.4 
 ---
 
 apiVersion: v1
