@@ -8,7 +8,7 @@ spec:
 
   source:
     repoURL: https://github.com/srp-internships/MRA.Infrastructure.git
-    targetRevision: HEAD
+    targetRevision: production
     path: MRAInfrastructure/Environment/Production
   destination:
     server: https://kubernetes.default.svc
