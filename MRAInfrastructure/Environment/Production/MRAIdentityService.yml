@@ -22,6 +22,8 @@ spec:
         ports:
         - containerPort: 80
         env:
+        - name: Environment
+          value: Staging
         - name: ASPNETCORE_URLS
           value: http://+:80
         - name: AzureClientSecretValue
@@ -29,6 +31,24 @@ spec:
             secretKeyRef:
               name: azure-client-secret-value
               key: secretValue
+        - name: AzureKeyVault__KeyVaultName
+          value: Staging-Mra-Key-Vault
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-config
+              key: AzureADApplicationId
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              name: mra-config
+              key: AzureADCertThumbprint
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-config
+              key: AzureADDirectoryId
+
       imagePullSecrets:
         - name: acr-secret
 ---
