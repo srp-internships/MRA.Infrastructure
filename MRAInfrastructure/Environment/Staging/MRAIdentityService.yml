@@ -1,33 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mra-web-api-deployment
-  namespace: mra
+  name: mra-identity-api-deployment
+  namespace: mra-staging
   labels:
-    app: mra-web-api
+    app: mra-identity-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mra-web-api
+      app: mra-identity-api
   template:
     metadata:
       labels:
-        app: mra-web-api
+        app: mra-identity-api
     spec:
       containers:
-      - name: mra-web-api
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.23.0
+      - name: mra-identity-api
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.23.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
         - name: ASPNETCORE_URLS
           value: http://+:80
+
         - name: Environment
           valueFrom:
             configMapKeyRef:
-              name: mra-prod-config
+              name: mra-staging-config
               key: Environment
 
         # azure key vault config data
@@ -39,24 +40,24 @@ spec:
         - name: AzureKeyVault__KeyVaultName
           valueFrom:
             configMapKeyRef:
-              name: mra-prod-config
+              name: mra-staging-config
               key: KeyVaultName
         - name: AzureKeyVault__AzureADApplicationId
           valueFrom:
             configMapKeyRef:
-              name: mra-prod-config
+              name: mra-staging-config
               key: AzureADApplicationId
         - name: AzureKeyVault__AzureADCertThumbprint
           valueFrom:
             configMapKeyRef:
-              name: mra-prod-config
+              name: mra-staging-config
               key: AzureADCertThumbprint
         - name: AzureKeyVault__AzureADDirectoryId
           valueFrom:
             configMapKeyRef:
-              name: mra-prod-config
+              name: mra-staging-config
               key: AzureADDirectoryId
-              
+
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -64,15 +65,15 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mra-web-api-service
-  namespace: mra
+  name: mra-identity-api-service
+  namespace: mra-staging
   labels:
-    app: mra-web-api
+    app: mra-identity-api
 spec:
   selector:
-    app: mra-web-api
+    app: mra-identity-api
   ports:
     - name: http
-      port: 5080
+      port: 5070
       targetPort: 80
       protocol: TCP
