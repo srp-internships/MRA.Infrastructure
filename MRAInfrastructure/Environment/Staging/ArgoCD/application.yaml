@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mra-argo-staging-application
+  namespace: argocd
+spec: 
+  project: default
+
+  source:
+    repoURL: https://github.com/srp-internships/MRA.Infrastructure.git
+    targetRevision: HEAD
+    path: MRAInfrastructure/Environment/Staging 
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mra-staging
+  
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    

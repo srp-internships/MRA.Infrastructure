@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mra-web-api-deployment
-  namespace: mra
+  namespace: mra-staging
   labels:
     app: mra-web-api
 spec:
@@ -24,11 +24,39 @@ spec:
         env:
         - name: ASPNETCORE_URLS
           value: http://+:80
+          
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: Environment
+
+        # azure key vault config data
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
               name: azure-client-secret-value
               key: secretValue
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: KeyVaultName
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADApplicationId
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADCertThumbprint
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADDirectoryId
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -37,7 +65,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mra-web-api-service
-  namespace: mra
+  namespace: mra-staging
   labels:
     app: mra-web-api
 spec:

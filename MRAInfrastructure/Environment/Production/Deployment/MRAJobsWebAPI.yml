@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mra-web-api-deployment
+  namespace: mra
+  labels:
+    app: mra-web-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-web-api
+  template:
+    metadata:
+      labels:
+        app: mra-web-api
+    spec:
+      containers:
+      - name: mra-web-api
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.23.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              name: mra-prod-config
+              key: Environment
+
+        # azure key vault config data
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              name: azure-client-secret-value
+              key: secretValue
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              name: mra-prod-config
+              key: KeyVaultName
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-prod-config
+              key: AzureADApplicationId
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              name: mra-prod-config
+              key: AzureADCertThumbprint
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-prod-config
+              key: AzureADDirectoryId
+              
+      imagePullSecrets:
+        - name: acr-secret
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-web-api-service
+  namespace: mra
+  labels:
+    app: mra-web-api
+spec:
+  selector:
+    app: mra-web-api
+  ports:
+    - name: http
+      port: 5080
+      targetPort: 80
+      protocol: TCP
