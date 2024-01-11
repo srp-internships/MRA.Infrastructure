@@ -27,13 +27,11 @@ jobs:
         run: |
           docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
           docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
-
       - name: Set up Git
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout gateway_release
-
       - name: Update the Image Version
         run: |
           sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
@@ -44,7 +42,6 @@ jobs:
       - name: Commit Changes
         run: |
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto commit - ${{ github.sha }}" && git status)
-
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
@@ -55,11 +52,9 @@ jobs:
       - name: Checkout main branch
         run: |
           git checkout main
-
       - name: Merge gateway_release into main
         run: |
           git merge gateway_release --allow-unrelated-histories
-
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
@@ -72,4 +67,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           WITH_V: true
-      
