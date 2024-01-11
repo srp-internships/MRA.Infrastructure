@@ -48,18 +48,11 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN }}
           branch: 'gateway_release'
 
-
-      - name: Checkout main branch
-        run: |
-          git checkout main
-      - name: Merge gateway_release into main
-        run: |
-          git merge gateway_release --allow-unrelated-histories
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GH_TOKEN }}
-          branch: 'main'
+          branch: 'gateway_release'
 
       - name: Minor version for each merge
         id: taggerFinal
