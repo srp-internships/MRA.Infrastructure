@@ -18,15 +18,15 @@ jobs:
           WITH_V: true
           DRY_RUN: true
 
-      - name: build docker image for Ocelot Gateway
-        run: |
-          docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
-        working-directory: ./MRAInfrastructure
+      # - name: build docker image for Ocelot Gateway
+      #   run: |
+      #     docker build -t silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }} .
+      #   working-directory: ./MRAInfrastructure
 
-      - name: Publish Ocelot Gateway to ACR
-        run: |
-          docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
-          docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
+      # - name: Publish Ocelot Gateway to ACR
+      #   run: |
+      #     docker login silkroadprofessionals.azurecr.io -u silkroadprofessionals -p ${{ secrets.ACR_PASS }}
+      #     docker push silkroadprofessionals.azurecr.io/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}
 
       - name: Set up Git
         run: |
@@ -59,7 +59,7 @@ jobs:
 
       - name: Merge gateway_release into main
         run: |
-          git merge --no-ff gateway_release
+          git merge --no-ff gateway_release --allow-unrelated-histories
           git add .
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto commit - ${{ github.sha }}" && git status)
 
