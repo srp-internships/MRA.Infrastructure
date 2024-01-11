@@ -33,7 +33,7 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
           git checkout gateway_release
-          git merge --no-ff main --allow-unrelated-histories
+          git merge --no-ff origin/main --allow-unrelated-histories
 
       - name: Update the Image Version
         run: |
