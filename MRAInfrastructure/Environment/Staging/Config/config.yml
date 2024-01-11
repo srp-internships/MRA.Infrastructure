@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mra-staging-config 
+  namespace: mra-staging
+data:
+  AzureADCertThumbprint: BF4F329CE3DA1FC2B0501983E5190788B8E5D4C2
+  KeyVaultName: Staging-Mra-Key-Vault 
+  AzureADDirectoryId: 2f941d93-4301-4de5-bba2-20344d055b9b
+  AzureADApplicationId: e3895af8-1f74-4efe-9010-331be7d76944
+  Environment: Staging 
