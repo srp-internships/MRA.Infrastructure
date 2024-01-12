@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mra-identity-api
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.28.0
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.29.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
