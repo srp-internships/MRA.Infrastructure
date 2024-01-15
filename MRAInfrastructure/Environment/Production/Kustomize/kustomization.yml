@@ -6,4 +6,5 @@ images:
   - name: silkroadprofessionals.azurecr.io/mra-web-api
     newTag: v0.31.0 
 resources:
-  - ../../Deployment/MRAJobsWebAPI.yml
+  - ./MRAIdentityService.yml
+  - ./MRAJobsWebAPI.yml

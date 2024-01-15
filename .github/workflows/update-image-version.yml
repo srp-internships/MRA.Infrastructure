@@ -22,28 +22,16 @@ jobs:
       - name: Update Staging/Kustomization IdentityService tag version and update the files in resource
         run: |
           sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
-          kustomize build . > MRAIdentityService.yml
+          kustomize build . > ../Deployment/deployment.yml
 
-        working-directory: ./MRAInfrastructure/Environment/Staging/Kustomize/IdentityService
-
-      - name: Update Staging/Kustomization WebAPI tag version and update the files in resource
-        run: |
-          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
-          kustomize build . > MRAJobsWebAPI.yml
-
-        working-directory: ./MRAInfrastructure/Environment/Staging/Kustomize/WebAPI
-
-      - name: Update Production/Kustomization IdentityService tag version
-        run: |
-          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
-        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/IdentityService
+        working-directory: ./MRAInfrastructure/Environment/Staging/Kustomize
 
       - name: Update Production/Kustomization WebAPI tag version
         run: |
           sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
           git add .
           git status
-        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/WebAPI
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize
       
       - name: Commit Changes
         run: |

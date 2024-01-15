@@ -22,8 +22,8 @@ jobs:
 
       - name: Update Production/Kustomization IdentityService tag version
         run: |
-          kustomize build . > MRAIdentityService.yml
-        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/IdentityService
+          kustomize build . > ../Deployment/deployment.yml
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize
 
       - name: Update Production/Kustomization WebAPI tag version
         run: |
