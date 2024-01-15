@@ -5,6 +5,8 @@ on:
 
 jobs:
   update_tag:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: checkout
