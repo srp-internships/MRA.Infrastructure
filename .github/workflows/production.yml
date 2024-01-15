@@ -1,0 +1,42 @@
+name: Production
+on:
+  push:
+    branches: ["production"]
+
+jobs:
+  update_tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v2
+
+      - name: Update Production/Kustomization IdentityService tag version
+        run: |
+          kustomize build . > MRAIdentityService.yml
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/IdentityService
+
+      - name: Update Production/Kustomization WebAPI tag version
+        run: |
+          kustomize build . > MRAJobsWebAPI.yml
+          git add .
+          git status
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/WebAPI
+      
+      - name: Commit Changes
+        run: |
+          git commit -m "Auto commit - ${{ github.sha }}"
+          git status
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}

@@ -10,19 +10,40 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
+
+      - name: Setup Kustomize
+        uses: imranismail/setup-kustomize@v2
       
       - name: Set up Git
         run: |
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
         
-      - name: Update the Image Version
+      - name: Update Staging/Kustomization IdentityService tag version and update the files in resource
         run: |
-          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-identity-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-identity-api:${{ github.event.client_payload.version }}/g" MRAIdentityService.yml
-          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-web-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
+          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
+          kustomize build . > MRAIdentityService.yml
+
+        working-directory: ./MRAInfrastructure/Environment/Staging/Kustomize/IdentityService
+
+      - name: Update Staging/Kustomization WebAPI tag version and update the files in resource
+        run: |
+          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
+          kustomize build . > MRAJobsWebAPI.yml
+
+        working-directory: ./MRAInfrastructure/Environment/Staging/Kustomize/WebAPI
+
+      - name: Update Production/Kustomization IdentityService tag version
+        run: |
+          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/IdentityService
+
+      - name: Update Production/Kustomization WebAPI tag version
+        run: |
+          sed -i 's|newTag: .*|newTag: ${{ github.event.client_payload.version }}|' kustomization.yml
           git add .
           git status
-        working-directory: ./MRAInfrastructure/Environment/Staging/Deployment
+        working-directory: ./MRAInfrastructure/Environment/Production/Kustomize/WebAPI
       
       - name: Commit Changes
         run: |
