@@ -16,14 +16,22 @@ jobs:
           git config user.name "${{ github.actor }}"
           git config user.email "${{ github.actor }}@users.noreply.github.com"
         
-      - name: Update the Image Version
+      - name: Update the Image Version (Identity)
+        if ${{ github.event.client_payload.project == 'identity' }}
         run: |
           sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-identity-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-identity-api:${{ github.event.client_payload.version }}/g" MRAIdentityService.yml
-          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-web-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
           git add .
           git status
         working-directory: ./MRAInfrastructure/Environment/Staging/Deployment
       
+
+      - name: Update the Image Version (Jobs)
+        if ${{ github.event.client_payload.project == 'jobs' }}
+        run: |
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/mra-web-api:[^\"]+/image: silkroadprofessionals.azurecr.io\/mra-web-api:${{ github.event.client_payload.version }}/g" MRAJobsWebAPI.yml
+          git add .
+          git status
+        working-directory: ./MRAInfrastructure/Environment/Staging/Deployment
       - name: Commit Changes
         run: |
           git commit -m "Auto commit - ${{ github.sha }}"
