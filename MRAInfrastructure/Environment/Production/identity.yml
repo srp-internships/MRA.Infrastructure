@@ -59,20 +59,3 @@ spec:
               
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mra-identity-api-service
-  namespace: mra
-  labels:
-    app: mra-identity-api
-spec:
-  selector:
-    app: mra-identity-api
-  ports:
-    - name: http
-      port: 5070
-      targetPort: 80
-      protocol: TCP
