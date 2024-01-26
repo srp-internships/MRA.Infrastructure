@@ -6,6 +6,7 @@ metadata:
   labels:
     app: mra-identity-api
 spec:
+  clusterIP: 10.99.36.181
   selector:
     app: mra-identity-api
   ports:
