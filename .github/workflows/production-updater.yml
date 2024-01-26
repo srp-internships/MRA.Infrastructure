@@ -1,0 +1,36 @@
+name: Repository Dispatch
+on:
+  push:
+    branches: [ "production" ]
+jobs:
+  versionUpdater:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+      
+      - name: Set up Git
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+        
+      - name: Update the Image Version
+        run: python prod_version_updater.py
+        working-directory: ./MRAInfrastructure/Environment
+      
+      - name: Commit Changes
+        run: |
+          cd ./MRAInfrastructure/Environment/Production
+          cat kustomization.yml
+          kustomize build . > ./Deployment/deployment.yml
+          git add .
+          git commit -m "Auto commit - ${{ github.sha }}"
+          git status
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          branch: ${{ github.ref }}
