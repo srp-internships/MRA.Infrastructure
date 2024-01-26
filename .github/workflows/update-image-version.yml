@@ -17,11 +17,8 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
         
       - name: Update the Image Version
-        uses: mikefarah/yq@master
-        with:
-          cmd: |
-            cd ./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}
-            yq '(.images | select(.name == "silkroadprofessionals.azurecr.io/${{ github.event.client_payload.image }}") | .newTag) = "${{ github.event.client_payload.version }}"' kustomization.yml
+        run: python version_updater.py "${{ github.event.client_payload.environment }}/kustomization.yml" ${{ github.event.client_payload.image }} ${{ github.event.client_payload.version }}
+        working-directory: ./MRAInfrastructure/Environment
       
       - name: Commit Changes
         run: |
