@@ -21,7 +21,7 @@ jobs:
         with:
           cmd: |
             cd ./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}
-            yq '(.images | select(.name == "silkroadprofessionals.azurecr.io/${{ github.event.client_payload.image }}") | .newTag) = ${{ github.event.client_payload.version }}' kustomization.yml
+            yq '(.images | select(.name == "silkroadprofessionals.azurecr.io/${{ github.event.client_payload.image }}") | .newTag) = "${{ github.event.client_payload.version }}"' kustomization.yml
       
       - name: Commit Changes
         run: |
