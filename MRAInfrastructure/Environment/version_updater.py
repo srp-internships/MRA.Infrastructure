@@ -9,6 +9,8 @@ def update(fileName, image, version):
         data[6] = f"  newTag: {version}\n"
     elif image == "mra-identity-api":
         data[4] = f"  newTag: {version}\n"
+    elif image == "mra-pages-api":
+        data[8] = f"  newTag: {version}\n"
 
     with open (fileName, "w") as file:
         file.writelines(data)

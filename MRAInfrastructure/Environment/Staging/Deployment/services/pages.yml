@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-pages-api-service
+  namespace: mra-staging
+  labels:
+    app: mra-identity-api
+spec:
+  clusterIP: 10.100.44.230
+  selector:
+    app: mra-pages-api
+  ports:
+    - name: http
+      port: 5090
+      targetPort: 80
+      protocol: TCP
