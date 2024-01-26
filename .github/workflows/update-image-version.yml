@@ -19,18 +19,18 @@ jobs:
       - name: Update the Image Version
         uses: mikefarah/yq@master
         with:
-          cmd: yq '(.images | select(.name == "silkroadprofessionals.azurecr.io/${{ github.event.client_payload.image }}") | .newTag) = ${{ github.event.client_payload.version }}' kustomization.yml
-
-        working-directory: "./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}"
+          cmd: |
+            cd ./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}
+            yq '(.images | select(.name == "silkroadprofessionals.azurecr.io/${{ github.event.client_payload.image }}") | .newTag) = ${{ github.event.client_payload.version }}' kustomization.yml
       
       - name: Commit Changes
         run: |
+          cd ./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}
           cat kustomization.yml
           kustomize build . > ./Deployment/deployment.yml
           git add .
           git commit -m "Auto commit - ${{ github.sha }}"
           git status
-        working-directory: "./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}"
 
       - name: Push Changes
         uses: ad-m/github-push-action@master
