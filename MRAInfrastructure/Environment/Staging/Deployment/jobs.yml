@@ -59,20 +59,3 @@ spec:
               key: AzureADDirectoryId
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mra-web-api-service
-  namespace: mra-staging
-  labels:
-    app: mra-web-api
-spec:
-  selector:
-    app: mra-web-api
-  ports:
-    - name: http
-      port: 5080
-      targetPort: 80
-      protocol: TCP
