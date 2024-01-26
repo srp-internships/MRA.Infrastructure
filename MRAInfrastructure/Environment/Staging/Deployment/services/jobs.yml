@@ -6,6 +6,7 @@ metadata:
   labels:
     app: mra-web-api
 spec:
+  clusterIP: 10.104.7.159
   selector:
     app: mra-web-api
   ports:
