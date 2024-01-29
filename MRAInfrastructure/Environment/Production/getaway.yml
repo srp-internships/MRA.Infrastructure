@@ -45,20 +45,3 @@ spec:
               key: secretValue
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: ocelot-api-gateway-service
-  namespace: mra
-  labels:
-    app: ocelot-api-gateway
-spec:
-  selector:
-    app: ocelot-api-gateway
-  ports:
-  - port: 8090
-    protocol: TCP
-    targetPort: 443
-  type: LoadBalancer

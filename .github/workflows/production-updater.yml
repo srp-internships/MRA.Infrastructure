@@ -1,7 +1,7 @@
 name: Repository Dispatch
 on:
-  repository_dispatch:
-    types: [update]
+  push:
+    branches: [ "production" ]
 jobs:
   versionUpdater:
     permissions:
@@ -17,12 +17,12 @@ jobs:
           git config user.email "${{ github.actor }}@users.noreply.github.com"
         
       - name: Update the Image Version
-        run: python version_updater.py "${{ github.event.client_payload.environment }}/kustomization.yml" ${{ github.event.client_payload.image }} ${{ github.event.client_payload.version }}
+        run: python prod_version_updater.py
         working-directory: ./MRAInfrastructure/Environment
       
       - name: Commit Changes
         run: |
-          cd ./MRAInfrastructure/Environment/${{ github.event.client_payload.environment }}
+          cd ./MRAInfrastructure/Environment/Production
           cat kustomization.yml
           kustomize build . > ./Deployment/deployment.yml
           git add .

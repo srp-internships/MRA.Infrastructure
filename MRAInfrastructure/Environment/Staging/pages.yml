@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mra-identity-api-deployment
+  name: mra-pages-api-deployment
   namespace: mra-staging
   labels:
-    app: mra-identity-api
+    app: mra-pages-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mra-identity-api
+      app: mra-pages-api
   template:
     metadata:
       labels:
-        app: mra-identity-api
+        app: mra-pages-api
     spec:
       containers:
-      - name: mra-identity-api
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.26.0
+      - name: mra-pages-api
+        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.35.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -57,23 +57,5 @@ spec:
             configMapKeyRef:
               name: mra-staging-config
               key: AzureADDirectoryId
-
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mra-identity-api-service
-  namespace: mra-staging
-  labels:
-    app: mra-identity-api
-spec:
-  selector:
-    app: mra-identity-api
-  ports:
-    - name: http
-      port: 5070
-      targetPort: 80
-      protocol: TCP

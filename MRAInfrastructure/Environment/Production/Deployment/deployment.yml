@@ -1,0 +1,165 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mra-identity-api
+  name: mra-identity-api-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-identity-api
+  template:
+    metadata:
+      labels:
+        app: mra-identity-api
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              key: Environment
+              name: mra-prod-config
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-prod-config
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.2.0
+        imagePullPolicy: Always
+        name: mra-identity-api
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mra-web-api
+  name: mra-web-api-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-web-api
+  template:
+    metadata:
+      labels:
+        app: mra-web-api
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              key: Environment
+              name: mra-prod-config
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-prod-config
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.42.0
+        imagePullPolicy: Always
+        name: mra-web-api
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: ocelot-api-gateway
+  name: ocelot-api-gateway-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ocelot-api-gateway
+  template:
+    metadata:
+      labels:
+        app: ocelot-api-gateway
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Password
+          value: ""
+        - name: ASPNETCORE_Kestrel__Certificates__Default__Path
+          value: /secrets/tls-cert/srp_tj.pfx
+        - name: ASPNETCORE_URLS
+          value: https://+;http://+
+        - name: ASPNETCORE_HTTPS_PORT
+          value: "443"
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.10.0
+        imagePullPolicy: Always
+        name: ocelot-api-gateway
+        ports:
+        - containerPort: 443
+        volumeMounts:
+        - mountPath: /secrets/tls-cert
+          name: srp-app-tls
+          readOnly: true
+      imagePullSecrets:
+      - name: acr-secret
+      volumes:
+      - name: srp-app-tls
+        secret:
+          secretName: srp-tls-cert-secret

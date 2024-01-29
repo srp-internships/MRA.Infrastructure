@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mra-identity-api
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.23.0
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.33.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -59,20 +59,3 @@ spec:
               
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mra-identity-api-service
-  namespace: mra
-  labels:
-    app: mra-identity-api
-spec:
-  selector:
-    app: mra-identity-api
-  ports:
-    - name: http
-      port: 5070
-      targetPort: 80
-      protocol: TCP

@@ -47,6 +47,18 @@
       ],
       "UpstreamPathTemplate": "/staging/identity/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.109.187.65",
+          "Port": 5090
+        }
+      ],
+      "UpstreamPathTemplate": "/staging/pages/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     }
   ]
 }

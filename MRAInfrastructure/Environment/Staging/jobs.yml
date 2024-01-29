@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: mra-web-api
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.26.0
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.35.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -59,20 +59,3 @@ spec:
               key: AzureADDirectoryId
       imagePullSecrets:
         - name: acr-secret
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: mra-web-api-service
-  namespace: mra-staging
-  labels:
-    app: mra-web-api
-spec:
-  selector:
-    app: mra-web-api
-  ports:
-    - name: http
-      port: 5080
-      targetPort: 80
-      protocol: TCP
