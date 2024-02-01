@@ -4,7 +4,7 @@ images:
 - name: silkroadprofessionals.azurecr.io/mra-identity-api
   newTag: v0.2.0
 - name: silkroadprofessionals.azurecr.io/mra-web-api
-  newTag: v0.42.0
+  newTag: v0.43.0
 - name: silkroadprofessionals.azurecr.io/mra-pages-api
   newTag: v0.2.0
 resources:
