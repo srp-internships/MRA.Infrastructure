@@ -58,9 +58,7 @@
         }
       ],
       "UpstreamPathTemplate": "/staging/pages/{everything}",
-      "HttpHandlerOptions": {
-        "AllowAutoRedirect": true
-      },
+      "HttpHandlerOptions": { "AllowAutoRedirect": true },
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     }
   ]
