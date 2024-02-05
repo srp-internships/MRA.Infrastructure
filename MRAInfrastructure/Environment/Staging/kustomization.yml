@@ -6,7 +6,7 @@ images:
 - name: silkroadprofessionals.azurecr.io/mra-web-api
   newTag: v0.43.0
 - name: silkroadprofessionals.azurecr.io/mra-pages-api
-  newTag: v0.3.0
+  newTag: v0.4.0
 resources:
 - identity.yml
 - jobs.yml
