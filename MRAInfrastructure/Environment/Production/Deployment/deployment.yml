@@ -49,7 +49,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.2.0
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.3.0
         imagePullPolicy: Always
         name: mra-identity-api
         ports:
@@ -108,7 +108,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.42.0
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.43.0
         imagePullPolicy: Always
         name: mra-web-api
         ports:
@@ -148,7 +148,7 @@ spec:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.10.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.11.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:
