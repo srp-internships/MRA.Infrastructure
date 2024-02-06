@@ -11,6 +11,8 @@ def update(fileName, image, version):
         data[4] = f"  newTag: {version}\n"
     elif image == "mra-pages-api":
         data[8] = f"  newTag: {version}\n"
+    elif image == "ocelot-api-gateway":
+        data[8] = f"  newTag: {version}\n"
 
     with open (fileName, "w") as file:
         file.writelines(data)
