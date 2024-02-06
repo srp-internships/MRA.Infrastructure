@@ -35,7 +35,7 @@ jobs:
           git checkout origin/main
       - name: Update the Image Version
         run: |
-          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" MRAOcelotAPIGateway.yml
+          sed -Ei "s/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:[^\"]+/image: silkroadprofessionals.azurecr.io\/ocelot-api-gateway:${{ steps.taggerDryRun.outputs.new_tag }}/g" kustomization.yml
           git add .
           git status
         working-directory: ./MRAInfrastructure/Environment/Production/Deployment
