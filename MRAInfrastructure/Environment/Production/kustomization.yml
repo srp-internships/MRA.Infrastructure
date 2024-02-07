@@ -13,3 +13,4 @@ resources:
 - identity.yml
 - jobs.yml
 - getaway.yml
+- pages.yml
