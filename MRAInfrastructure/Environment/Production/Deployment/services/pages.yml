@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-pages-api-service
+  namespace: mra
+  labels:
+    app: mra-identity-api
+spec:
+  selector:
+    app: mra-pages-api
+  ports:
+    - name: http
+      port: 5090
+      targetPort: 80
+      protocol: TCP
