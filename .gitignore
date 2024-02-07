@@ -396,3 +396,7 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+MRAInfrastructure/.idea/.idea.MRAInfrastructure/.idea/encodings.xml
+MRAInfrastructure/.idea/.idea.MRAInfrastructure/.idea/indexLayout.xml
+MRAInfrastructure/.idea/.idea.MRAInfrastructure/.idea/vcs.xml
+MRAInfrastructure/.idea/.idea.MRAInfrastructure/.idea/.gitignore
