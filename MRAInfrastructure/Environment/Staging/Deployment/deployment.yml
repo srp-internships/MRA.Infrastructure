@@ -61,65 +61,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mra-pages-api
-  name: mra-pages-api-deployment
-  namespace: mra-staging
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mra-pages-api
-  template:
-    metadata:
-      labels:
-        app: mra-pages-api
-    spec:
-      containers:
-      - env:
-        - name: ASPNETCORE_URLS
-          value: http://+:80
-        - name: Environment
-          valueFrom:
-            configMapKeyRef:
-              key: Environment
-              name: mra-staging-config
-        - name: AzureClientSecretValue
-          valueFrom:
-            secretKeyRef:
-              key: secretValue
-              name: azure-client-secret-value
-        - name: AzureKeyVault__KeyVaultName
-          valueFrom:
-            configMapKeyRef:
-              key: KeyVaultName
-              name: mra-staging-config
-        - name: AzureKeyVault__AzureADApplicationId
-          valueFrom:
-            configMapKeyRef:
-              key: AzureADApplicationId
-              name: mra-staging-config
-        - name: AzureKeyVault__AzureADCertThumbprint
-          valueFrom:
-            configMapKeyRef:
-              key: AzureADCertThumbprint
-              name: mra-staging-config
-        - name: AzureKeyVault__AzureADDirectoryId
-          valueFrom:
-            configMapKeyRef:
-              key: AzureADDirectoryId
-              name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.9.0
-        imagePullPolicy: Always
-        name: mra-pages-api
-        ports:
-        - containerPort: 80
-      imagePullSecrets:
-      - name: acr-secret
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
     app: mra-web-api
   name: mra-web-api-deployment
   namespace: mra-staging
