@@ -108,7 +108,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.14.0
+        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.15.0
         imagePullPolicy: Always
         name: mra-pages-api
         ports:
