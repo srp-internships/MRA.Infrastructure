@@ -57,7 +57,7 @@
           "Port": 5090
         }
       ],
-      "UpstreamPathTemplate": "/staging/pages/{everything}",
+      "UpstreamPathTemplate": "/pages/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ],
       "HttpHandlerOptions": {
         "AllowAutoRedirect": true
