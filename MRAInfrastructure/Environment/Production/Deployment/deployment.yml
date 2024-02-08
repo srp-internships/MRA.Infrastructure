@@ -82,7 +82,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: Environment
-              name: mra-config
+              name: mra-prod-config
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -92,22 +92,22 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: KeyVaultName
-              name: mra-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADApplicationId
           valueFrom:
             configMapKeyRef:
               key: AzureADApplicationId
-              name: mra-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADCertThumbprint
           valueFrom:
             configMapKeyRef:
               key: AzureADCertThumbprint
-              name: mra-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADDirectoryId
           valueFrom:
             configMapKeyRef:
               key: AzureADDirectoryId
-              name: mra-config
+              name: mra-prod-config
         image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.10.0
         imagePullPolicy: Always
         name: mra-pages-api

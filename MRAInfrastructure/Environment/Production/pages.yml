@@ -28,7 +28,7 @@ spec:
         - name: Environment
           valueFrom:
             configMapKeyRef:
-              name: mra-config
+              name: mra-prod-config
               key: Environment
 
         # azure key vault config data
@@ -40,22 +40,22 @@ spec:
         - name: AzureKeyVault__KeyVaultName
           valueFrom:
             configMapKeyRef:
-              name: mra-config
+              name: mra-prod-config
               key: KeyVaultName
         - name: AzureKeyVault__AzureADApplicationId
           valueFrom:
             configMapKeyRef:
-              name: mra-config
+              name: mra-prod-config
               key: AzureADApplicationId
         - name: AzureKeyVault__AzureADCertThumbprint
           valueFrom:
             configMapKeyRef:
-              name: mra-config
+              name: mra-prod-config
               key: AzureADCertThumbprint
         - name: AzureKeyVault__AzureADDirectoryId
           valueFrom:
             configMapKeyRef:
-              name: mra-config
+              name: mra-prod-config
               key: AzureADDirectoryId
       imagePullSecrets:
         - name: acr-secret
