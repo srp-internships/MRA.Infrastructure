@@ -108,7 +108,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.13.0
+        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.16.0
         imagePullPolicy: Always
         name: mra-pages-api
         ports:
@@ -207,7 +207,7 @@ spec:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.14.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.15.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:
