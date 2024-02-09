@@ -64,6 +64,21 @@
       }
     },
     {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.109.187.65",
+          "Port": 5090
+        }
+      ],
+      "UpstreamPathTemplate": "/pages/api/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ],
+      "HttpHandlerOptions": {
+        "AllowAutoRedirect": true
+      }
+    },
+    {
       "DownstreamPathTemplate": "/pagesMetadata/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
