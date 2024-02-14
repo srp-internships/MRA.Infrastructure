@@ -243,6 +243,8 @@ spec:
     spec:
       containers:
       - env:
+        - name: TZ
+          value: "Asia/Karachi" # Set the timezone to GMT+5 (Pakistan Standard Time)
         - name: ASPNETCORE_Kestrel__Certificates__Default__Password
           value: ""
         - name: ASPNETCORE_Kestrel__Certificates__Default__Path
