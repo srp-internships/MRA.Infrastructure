@@ -4,7 +4,7 @@ metadata:
   labels:
     app: mra-dotnet-compiler
   name: mra-dotnet-compiler-deployment
-  namespace: mra-staging
+  namespace: mra-prod
 spec:
   replicas: 1
   selector:
@@ -23,7 +23,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: Environment
-              name: mra-staging-config
+              name: mra-prod-config
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -33,22 +33,22 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: KeyVaultName
-              name: mra-staging-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADApplicationId
           valueFrom:
             configMapKeyRef:
               key: AzureADApplicationId
-              name: mra-staging-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADCertThumbprint
           valueFrom:
             configMapKeyRef:
               key: AzureADCertThumbprint
-              name: mra-staging-config
+              name: mra-prod-config
         - name: AzureKeyVault__AzureADDirectoryId
           valueFrom:
             configMapKeyRef:
               key: AzureADDirectoryId
-              name: mra-staging-config
+              name: mra-prod-config
         image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.1.0
         imagePullPolicy: Always
         name: mra-dotnet-compiler
