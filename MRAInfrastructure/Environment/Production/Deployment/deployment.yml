@@ -4,7 +4,7 @@ metadata:
   labels:
     app: mra-dotnet-compiler
   name: mra-dotnet-compiler-deployment
-  namespace: mra-prod
+  namespace: mra
 spec:
   replicas: 1
   selector:
