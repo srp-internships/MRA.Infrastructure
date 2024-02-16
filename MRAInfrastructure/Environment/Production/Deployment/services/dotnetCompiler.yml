@@ -8,7 +8,7 @@ metadata:
 spec:
   clusterIP: 10.122.70.160
   selector:
-    app: mra-web-api
+    app: mra-dotnet-compiler
   ports:
     - name: http
       port: 5090
