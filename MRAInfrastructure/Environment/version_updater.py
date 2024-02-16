@@ -13,6 +13,8 @@ def update(fileName, image, version):
         data[8] = f"  newTag: {version}\n"
     elif image == "mra-pages-api":
         data[10] = f"  newTag: {version}\n"
+    elif image == "mra-dotnet-compiler":
+        data[12] = f"  newTag: {version}\n"
 
     with open (fileName, "w") as file:
         file.writelines(data)
