@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: mra-dotnet-compiler
-          image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.1.0
+          image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.2.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
