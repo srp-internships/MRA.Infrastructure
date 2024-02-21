@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mra-dotnet-compiler-deployment
-  namespace: mra-staging
+  namespace: mra
   labels:
     app: mra-dotnet-compiler
 spec:
@@ -16,46 +16,46 @@ spec:
         app: mra-dotnet-compiler
     spec:
       containers:
-      - name: mra-dotnet-compiler
-        image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.0.0
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 80
-        env:
-        - name: ASPNETCORE_URLS
-          value: http://+:80
-          
-        - name: Environment
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: Environment
-
-        # azure key vault config data
-        - name: AzureClientSecretValue
-          valueFrom:
-            secretKeyRef:
-              name: azure-client-secret-value
-              key: secretValue
-        - name: AzureKeyVault__KeyVaultName
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: KeyVaultName
-        - name: AzureKeyVault__AzureADApplicationId
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: AzureADApplicationId
-        - name: AzureKeyVault__AzureADCertThumbprint
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: AzureADCertThumbprint
-        - name: AzureKeyVault__AzureADDirectoryId
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: AzureADDirectoryId
+        - name: mra-dotnet-compiler
+          image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.1.0
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_URLS
+              value: http://+:80
+            - name: Environment
+              valueFrom:
+                configMapKeyRef:
+                  name: mra-prod-config
+                  key: Environment
+            
+            # azure key vault config data
+            - name: AzureClientSecretValue
+              valueFrom:
+                secretKeyRef:
+                  name: azure-client-secret-value
+                  key: secretValue
+            - name: AzureKeyVault__KeyVaultName
+              valueFrom:
+                configMapKeyRef:
+                  name: mra-prod-config
+                  key: KeyVaultName
+            - name: AzureKeyVault__AzureADApplicationId
+              valueFrom:
+                configMapKeyRef:
+                  name: mra-prod-config
+                  key: AzureADApplicationId
+            - name: AzureKeyVault__AzureADCertThumbprint
+              valueFrom:
+                configMapKeyRef:
+                  name: mra-prod-config
+                  key: AzureADCertThumbprint
+            - name: AzureKeyVault__AzureADDirectoryId
+              valueFrom:
+                configMapKeyRef:
+                  name: mra-prod-config
+                  key: AzureADDirectoryId
+      
       imagePullSecrets:
         - name: acr-secret

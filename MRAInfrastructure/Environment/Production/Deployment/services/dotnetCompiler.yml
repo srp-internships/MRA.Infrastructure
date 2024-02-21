@@ -11,6 +11,6 @@ spec:
     app: mra-dotnet-compiler
   ports:
     - name: http
-      port: 5090
+      port: 5010
       targetPort: 80
       protocol: TCP
