@@ -10,7 +10,7 @@ images:
 - name: silkroadprofessionals.azurecr.io/mra-pages-api
   newTag: v0.20.0
 - name: silkroadprofessionals.azurecr.io/mra-dotnet-compiler
-  newTag: v0.5.0
+  newTag: v0.6.0
 resources:
 - identity.yml
 - jobs.yml
