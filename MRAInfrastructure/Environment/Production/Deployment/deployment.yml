@@ -2,6 +2,67 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app: mra-dotnet-compiler
+  name: mra-dotnet-compiler-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-dotnet-compiler
+  template:
+    metadata:
+      labels:
+        app: mra-dotnet-compiler
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              key: Environment
+              name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-prod-config
+        image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.7.0
+        imagePullPolicy: Always
+        name: mra-dotnet-compiler
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
     app: mra-identity-api
   name: mra-identity-api-deployment
   namespace: mra
@@ -108,7 +169,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.16.0
+        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.20.0
         imagePullPolicy: Always
         name: mra-pages-api
         ports:
@@ -207,7 +268,7 @@ spec:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.15.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.16.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:
