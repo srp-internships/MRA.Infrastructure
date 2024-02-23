@@ -24,6 +24,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
