@@ -49,6 +49,18 @@
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     },
     {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.122.70.160",
+          "Port": 5010
+        }
+      ],
+      "UpstreamPathTemplate": "/codeService/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
+    },
+    {
       "DownstreamPathTemplate": "/pages/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
