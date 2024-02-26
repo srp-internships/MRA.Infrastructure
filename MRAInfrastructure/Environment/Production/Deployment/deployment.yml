@@ -85,6 +85,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -144,6 +146,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -203,6 +207,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -268,6 +274,8 @@ spec:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
+        - name: TZ
+          value: Asia/Karachi
         image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.17.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
