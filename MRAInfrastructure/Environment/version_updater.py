@@ -9,7 +9,7 @@ def update(fileName, image, version):
             data[4] = f"  newTag: {version}\n"
     elif image == "mra-web-api":
         data[6] = f"  newTag: {version}\n"
-    elif image == "mra-onlinePlatform-api":
+    elif image == "mra-online-platform-api":
         data[8] = f"  newTag: {version}\n"
     
     

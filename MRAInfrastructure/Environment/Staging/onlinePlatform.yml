@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mra-onlinePlatform-api-deployment
+  name: mra-online-platform-api-deployment
   namespace: mra-staging
   labels:
-    app: mra-onlinePlatform-api
+    app: mra-online-platform-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mra-onlinePlatform-api
+      app: mra-online-platform-api
   template:
     metadata:
       labels:
-        app: mra-onlinePlatform-api
+        app: mra-online-platform-api
     spec:
       containers:
-      - name: mra-onlinePlatform-api
-        image: silkroadprofessionals.azurecr.io/mra-onlinePlatform-api:v0.1.0
+      - name: mra-online-platform-api
+        image: silkroadprofessionals.azurecr.io/mra-online-platform-api:v0.1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 80
