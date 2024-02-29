@@ -53,7 +53,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "10.122.70.160",
+          "Host": "10.99.36.182",
           "Port": 5010
         }
       ],

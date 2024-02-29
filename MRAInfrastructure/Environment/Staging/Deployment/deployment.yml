@@ -24,6 +24,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-staging-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -83,6 +85,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-staging-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:

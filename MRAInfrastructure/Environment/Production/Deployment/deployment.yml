@@ -51,7 +51,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.7.0
+        image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.8.0
         imagePullPolicy: Always
         name: mra-dotnet-compiler
         ports:
@@ -85,6 +85,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -144,6 +146,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -203,6 +207,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -263,12 +269,14 @@ spec:
           value: https://+;http://+
         - name: ASPNETCORE_HTTPS_PORT
           value: "443"
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.16.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.17.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:
