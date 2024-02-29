@@ -7,6 +7,9 @@ images:
     newTag: v0.49.0
   - name: silkroadprofessionals.azurecr.io/ocelot-api-gateway
     newTag: v0.4.0
+  - name: silkroadprofessionals.azurecr.io/mra-onlinePlatform-api
+    newTag: v0.1.0
 resources:
   - identity.yml
   - jobs.yml
+  - onlinePlatform.yml
