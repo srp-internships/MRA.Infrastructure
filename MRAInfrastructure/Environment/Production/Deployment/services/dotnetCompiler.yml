@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mra-dotnet-compiler
 spec:
-  clusterIP: 10.122.70.160
+  clusterIP: 10.99.36.182
   selector:
     app: mra-dotnet-compiler
   ports:
