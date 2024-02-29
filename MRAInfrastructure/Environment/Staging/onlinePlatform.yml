@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mra-onlinePlatform-api-deployment
+  namespace: mra-staging
+  labels:
+    app: mra-onlinePlatform-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-onlinePlatform-api
+  template:
+    metadata:
+      labels:
+        app: mra-onlinePlatform-api
+    spec:
+      containers:
+      - name: mra-onlinePlatform-api
+        image: silkroadprofessionals.azurecr.io/mra-onlinePlatform-api:v0.1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: Environment
+        - name: TZ
+          value: Asia/Karachi
+
+        # azure key vault config data
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              name: azure-client-secret-value
+              key: secretValue
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: KeyVaultName
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADApplicationId
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADCertThumbprint
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADDirectoryId
+      imagePullSecrets:
+        - name: acr-secret

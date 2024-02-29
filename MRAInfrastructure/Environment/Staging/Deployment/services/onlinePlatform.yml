@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-onlinePlatform-api-service
+  namespace: mra-staging
+  labels:
+    app: mra-onlinePlatform-api
+spec:
+  clusterIP: 10.199.44.230
+  selector:
+    app: mra-onlinePlatform-api
+  ports:
+    - name: http
+      port: 5070
+      targetPort: 80
+      protocol: TCP

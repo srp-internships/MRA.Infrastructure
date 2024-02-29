@@ -5,16 +5,14 @@ def update(fileName, image, version):
     with open(fileName, "r") as file:
         data = file.readlines()
 
-    if image == "mra-web-api":
+    if image == "mra-identity-api":
+            data[4] = f"  newTag: {version}\n"
+    elif image == "mra-web-api":
         data[6] = f"  newTag: {version}\n"
-    elif image == "mra-identity-api":
-        data[4] = f"  newTag: {version}\n"
-    elif image == "ocelot-api-gateway":
+    elif image == "mra-onlinePlatform-api":
         data[8] = f"  newTag: {version}\n"
-    elif image == "mra-pages-api":
-        data[10] = f"  newTag: {version}\n"
-    elif image == "mra-dotnet-compiler":
-        data[12] = f"  newTag: {version}\n"
+    
+    
 
     with open (fileName, "w") as file:
         file.writelines(data)
