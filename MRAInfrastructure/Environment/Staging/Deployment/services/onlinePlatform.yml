@@ -6,7 +6,7 @@ metadata:
   labels:
     app: mra-online-platform-api
 spec:
-  clusterIP: 10.199.44.230
+  clusterIP: 10.111.7.79
   selector:
     app: mra-online-platform-api
   ports:
