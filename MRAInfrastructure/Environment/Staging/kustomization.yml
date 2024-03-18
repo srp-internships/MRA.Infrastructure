@@ -5,6 +5,12 @@ images:
   newTag: v0.10.0
 - name: silkroadprofessionals.azurecr.io/mra-web-api
   newTag: v0.50.0
+  
+  
+  
+  
+
+
 - name: silkroadprofessionals.azurecr.io/mra-online-platform-api
   newTag: v1.7.0
 resources:
