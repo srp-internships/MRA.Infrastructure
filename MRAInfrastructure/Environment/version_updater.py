@@ -1,22 +1,18 @@
-
 import sys
+
 
 def update(fileName, image, version):
     with open(fileName, "r") as file:
         data = file.readlines()
 
-    if image == "mra-web-api":
-        data[6] = f"  newTag: {version}\n"
-    elif image == "mra-identity-api":
+    if image == "mra-identity-api":
         data[4] = f"  newTag: {version}\n"
-    elif image == "ocelot-api-gateway":
+    elif image == "mra-web-api":
+        data[6] = f"  newTag: {version}\n"
+    elif image == "mra-online-platform-api":
         data[8] = f"  newTag: {version}\n"
-    elif image == "mra-pages-api":
-        data[10] = f"  newTag: {version}\n"
-    elif image == "mra-dotnet-compiler":
-        data[12] = f"  newTag: {version}\n"
 
-    with open (fileName, "w") as file:
+    with open(fileName, "w") as file:
         file.writelines(data)
 
 
@@ -26,4 +22,3 @@ if __name__ == "__main__":
         sys.exit(1)
 
     update(sys.argv[1], sys.argv[2], sys.argv[3])
-
