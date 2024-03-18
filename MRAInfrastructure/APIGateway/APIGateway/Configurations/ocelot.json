@@ -53,6 +53,18 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
+          "Host": "10.111.7.79",
+          "Port": 5070
+        }
+      ],
+      "UpstreamPathTemplate": "/staging/academy/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
           "Host": "10.99.36.182",
           "Port": 5010
         }
