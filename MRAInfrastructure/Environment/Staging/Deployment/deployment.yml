@@ -18,7 +18,22 @@ spec:
       containers:
       - env:
         - name: ASPNETCORE_URLS
-          value: http://+:80
+          value: http://+:443
+        - name: MongoDb__ConnectionString
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-connection-string
+              name: mra-staging-secret
+        - name: Application__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              key: identity-client-secret
+              name: mra-staging-secret
+        - name: JWT__Secret
+          valueFrom:
+            secretKeyRef:
+              key: jwt-secret
+              name: mra-staging-secret
         - name: Environment
           valueFrom:
             configMapKeyRef:
@@ -51,11 +66,11 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.4.0
+        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.5.0
         imagePullPolicy: Always
         name: mra-identity-api
         ports:
-        - containerPort: 80
+        - containerPort: 443
       imagePullSecrets:
       - name: acr-secret
 ---
