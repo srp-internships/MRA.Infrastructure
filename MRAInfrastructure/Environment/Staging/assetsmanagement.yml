@@ -20,11 +20,25 @@ spec:
         image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.0.0
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 443
         env:
         - name: ASPNETCORE_URLS
-          value: http://+:80
-
+          value: http://+:443
+        - name: MongoDb__ConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: mongodb-connection-string
+        - name: Application__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: identity-client-secret
+        - name: JWT__Secret
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: jwt-secret
         - name: Environment
           valueFrom:
             configMapKeyRef:
