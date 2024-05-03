@@ -1,0 +1,77 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mra-asset-management-api-deployment
+  namespace: mra-staging
+  labels:
+    app: mra-asset-management-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-asset-management-api
+  template:
+    metadata:
+      labels:
+        app: mra-asset-management-api
+    spec:
+      containers:
+      - name: mra-identity-api
+        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.0.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: MongoDb__ConnectionString
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: mongodb-connection-string
+        - name: Application__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: identity-client-secret
+        - name: JWT__Secret
+          valueFrom:
+            secretKeyRef:
+              name: mra-staging-secret
+              key: jwt-secret
+        - name: ASPNETCORE_ENVIRONMENT
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: Environment
+        - name: TZ
+          value: Asia/Karachi
+
+        # azure key vault config data
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              name: azure-client-secret-value
+              key: secretValue
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: KeyVaultName
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADApplicationId
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADCertThumbprint
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              name: mra-staging-config
+              key: AzureADDirectoryId
+      imagePullSecrets:
+        - name: acr-secret
