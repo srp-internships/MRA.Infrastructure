@@ -39,7 +39,7 @@ spec:
             secretKeyRef:
               name: mra-staging-secret
               key: jwt-secret
-        - name: Environment
+        - name: ASPNETCORE_ENVIRONMENT
           valueFrom:
             configMapKeyRef:
               name: mra-staging-config
