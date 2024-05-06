@@ -57,7 +57,7 @@
           "Port": 5070
         }
       ],
-      "UpstreamPathTemplate": "/staging/asset/{everything}",
+      "UpstreamPathTemplate": "/staging/assets/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     },
     {
