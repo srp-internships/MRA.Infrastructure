@@ -6,7 +6,7 @@ images:
 - name: silkroadprofessionals.azurecr.io/mra-web-api
   newTag: v0.46.0
 - name: silkroadprofessionals.azurecr.io/ocelot-api-gateway
-  newTag: v0.19.0
+  newTag: v0.20.0
 - name: silkroadprofessionals.azurecr.io/mra-pages-api
   newTag: v0.20.0
 - name: silkroadprofessionals.azurecr.io/mra-dotnet-compiler
