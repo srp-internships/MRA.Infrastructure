@@ -14,7 +14,7 @@ images:
 - name: silkroadprofessionals.azurecr.io/mra-online-platform-api
   newTag: v1.7.0
 - name: silkroadprofessionals.azurecr.io/mra-asset-management-api
-  newTag: v0.13.0
+  newTag: v0.14.0
 resources:
  - identity.yml
  - jobs.yml
