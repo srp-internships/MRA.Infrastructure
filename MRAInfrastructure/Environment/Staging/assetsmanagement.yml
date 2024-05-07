@@ -16,7 +16,7 @@ spec:
         app: mra-asset-management-api
     spec:
       containers:
-      - name: mra-identity-api
+      - name: mra-asset-management-api
         image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.0.0
         imagePullPolicy: Always
         ports:
