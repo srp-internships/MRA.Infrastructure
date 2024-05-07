@@ -66,9 +66,9 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.9.0
+        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.15.0
         imagePullPolicy: Always
-        name: mra-identity-api
+        name: mra-asset-management-api
         ports:
         - containerPort: 80
       imagePullSecrets:
