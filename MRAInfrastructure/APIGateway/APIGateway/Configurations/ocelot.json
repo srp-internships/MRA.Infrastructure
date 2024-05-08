@@ -49,7 +49,7 @@
       "UpstreamHttpMethod": [ "GET", "POST", "DELETE", "PUT" ]
     },
     {
-      "DownstreamPathTemplate": "{everything}",
+      "DownstreamPathTemplate": "/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
