@@ -40,10 +40,7 @@ spec:
               name: mra-staging-secret
               key: jwt-secret
         - name: ASPNETCORE_ENVIRONMENT
-          valueFrom:
-            configMapKeyRef:
-              name: mra-staging-config
-              key: Environment
+          value: Production
         - name: TZ
           value: Asia/Karachi
 
