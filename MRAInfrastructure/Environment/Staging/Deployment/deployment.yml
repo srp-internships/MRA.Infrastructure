@@ -35,10 +35,7 @@ spec:
               key: jwt-secret
               name: mra-staging-secret
         - name: ASPNETCORE_ENVIRONMENT
-          valueFrom:
-            configMapKeyRef:
-              key: Environment
-              name: mra-staging-config
+          value: Staging
         - name: TZ
           value: Asia/Karachi
         - name: AzureClientSecretValue
@@ -66,7 +63,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.15.0
+        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.19.0
         imagePullPolicy: Always
         name: mra-asset-management-api
         ports:

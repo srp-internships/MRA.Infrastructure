@@ -6,11 +6,11 @@ metadata:
   labels:
     app: mra-asset-management-api
 spec:
-  clusterIP: 10.100.44.231
+  type: LoadBalancer
   selector:
     app: mra-asset-management-api
   ports:
     - name: http
-      port: 5070
+      port: 8083
       targetPort: 80
       protocol: TCP
