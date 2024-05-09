@@ -35,7 +35,7 @@ spec:
               key: jwt-secret
               name: mra-staging-secret
         - name: ASPNETCORE_ENVIRONMENT
-          value: Production
+          value: Staging
         - name: TZ
           value: Asia/Karachi
         - name: AzureClientSecretValue
