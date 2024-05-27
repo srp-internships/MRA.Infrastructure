@@ -2,6 +2,79 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
+    app: mra-asset-management-api
+  name: mra-asset-management-api-deployment
+  namespace: mra-staging
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-asset-management-api
+  template:
+    metadata:
+      labels:
+        app: mra-asset-management-api
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: MongoDb__ConnectionString
+          valueFrom:
+            secretKeyRef:
+              key: mongodb-connection-string
+              name: mra-staging-secret
+        - name: Application__ClientSecret
+          valueFrom:
+            secretKeyRef:
+              key: identity-client-secret
+              name: mra-staging-secret
+        - name: JWT__Secret
+          valueFrom:
+            secretKeyRef:
+              key: jwt-secret
+              name: mra-staging-secret
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: TZ
+          value: Asia/Karachi
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-staging-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-staging-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-staging-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-staging-config
+        image: silkroadprofessionals.azurecr.io/mra-asset-management-api:v0.16.0
+        imagePullPolicy: Always
+        name: mra-asset-management-api
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
     app: mra-identity-api
   name: mra-identity-api-deployment
   namespace: mra-staging
@@ -24,6 +97,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-staging-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -49,7 +124,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.4.0
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v1.8.0
         imagePullPolicy: Always
         name: mra-identity-api
         ports:
@@ -61,18 +136,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mra-pages-api
-  name: mra-pages-api-deployment
+    app: mra-online-platform-api
+  name: mra-online-platform-api-deployment
   namespace: mra-staging
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mra-pages-api
+      app: mra-online-platform-api
   template:
     metadata:
       labels:
-        app: mra-pages-api
+        app: mra-online-platform-api
     spec:
       containers:
       - env:
@@ -83,6 +158,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-staging-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -108,9 +185,9 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.4.0
+        image: silkroadprofessionals.azurecr.io/mra-online-platform-api:v1.7.0
         imagePullPolicy: Always
-        name: mra-pages-api
+        name: mra-online-platform-api
         ports:
         - containerPort: 80
       imagePullSecrets:
@@ -142,6 +219,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-staging-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -167,7 +246,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.44.0
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.55.0
         imagePullPolicy: Always
         name: mra-web-api
         ports:

@@ -38,6 +38,8 @@ spec:
           value: "https://+;http://+"
         - name: ASPNETCORE_HTTPS_PORT
           value: "443"
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:

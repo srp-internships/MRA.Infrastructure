@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mra-asset-management-api-service
+  namespace: mra-staging
+  labels:
+    app: mra-asset-management-api
+spec:
+  clusterIP: 10.100.44.231
+  selector:
+    app: mra-asset-management-api
+  ports:
+    - name: http
+      port: 5070
+      targetPort: 80
+      protocol: TCP

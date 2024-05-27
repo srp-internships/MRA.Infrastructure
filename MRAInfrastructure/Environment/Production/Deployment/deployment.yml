@@ -2,18 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mra-identity-api
-  name: mra-identity-api-deployment
+    app: mra-dotnet-compiler
+  name: mra-dotnet-compiler-deployment
   namespace: mra
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mra-identity-api
+      app: mra-dotnet-compiler
   template:
     metadata:
       labels:
-        app: mra-identity-api
+        app: mra-dotnet-compiler
     spec:
       containers:
       - env:
@@ -24,6 +24,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -49,9 +51,131 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.4.0
+        image: silkroadprofessionals.azurecr.io/mra-dotnet-compiler:v0.8.0
+        imagePullPolicy: Always
+        name: mra-dotnet-compiler
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mra-identity-api
+  name: mra-identity-api-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-identity-api
+  template:
+    metadata:
+      labels:
+        app: mra-identity-api
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              key: Environment
+              name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-prod-config
+        image: silkroadprofessionals.azurecr.io/mra-identity-api:v0.5.0
         imagePullPolicy: Always
         name: mra-identity-api
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mra-pages-api
+  name: mra-pages-api-deployment
+  namespace: mra
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mra-pages-api
+  template:
+    metadata:
+      labels:
+        app: mra-pages-api
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_URLS
+          value: http://+:80
+        - name: Environment
+          valueFrom:
+            configMapKeyRef:
+              key: Environment
+              name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
+        - name: AzureClientSecretValue
+          valueFrom:
+            secretKeyRef:
+              key: secretValue
+              name: azure-client-secret-value
+        - name: AzureKeyVault__KeyVaultName
+          valueFrom:
+            configMapKeyRef:
+              key: KeyVaultName
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADApplicationId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADApplicationId
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADCertThumbprint
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADCertThumbprint
+              name: mra-prod-config
+        - name: AzureKeyVault__AzureADDirectoryId
+          valueFrom:
+            configMapKeyRef:
+              key: AzureADDirectoryId
+              name: mra-prod-config
+        image: silkroadprofessionals.azurecr.io/mra-pages-api:v0.20.0
+        imagePullPolicy: Always
+        name: mra-pages-api
         ports:
         - containerPort: 80
       imagePullSecrets:
@@ -83,6 +207,8 @@ spec:
             configMapKeyRef:
               key: Environment
               name: mra-prod-config
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
@@ -108,7 +234,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-prod-config
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.44.0
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.46.0
         imagePullPolicy: Always
         name: mra-web-api
         ports:
@@ -143,12 +269,14 @@ spec:
           value: https://+;http://+
         - name: ASPNETCORE_HTTPS_PORT
           value: "443"
+        - name: TZ
+          value: Asia/Karachi
         - name: AzureClientSecretValue
           valueFrom:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.11.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.25.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:

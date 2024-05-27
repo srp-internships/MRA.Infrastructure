@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mra-pages-api-deployment
-  namespace: mra-staging
+  namespace: mra
   labels:
     app: mra-pages-api
 spec:
@@ -28,8 +28,10 @@ spec:
         - name: Environment
           valueFrom:
             configMapKeyRef:
-              name: mra-staging-config
+              name: mra-prod-config
               key: Environment
+        - name: TZ
+          value: Asia/Karachi
 
         # azure key vault config data
         - name: AzureClientSecretValue
@@ -40,22 +42,22 @@ spec:
         - name: AzureKeyVault__KeyVaultName
           valueFrom:
             configMapKeyRef:
-              name: mra-staging-config
+              name: mra-prod-config
               key: KeyVaultName
         - name: AzureKeyVault__AzureADApplicationId
           valueFrom:
             configMapKeyRef:
-              name: mra-staging-config
+              name: mra-prod-config
               key: AzureADApplicationId
         - name: AzureKeyVault__AzureADCertThumbprint
           valueFrom:
             configMapKeyRef:
-              name: mra-staging-config
+              name: mra-prod-config
               key: AzureADCertThumbprint
         - name: AzureKeyVault__AzureADDirectoryId
           valueFrom:
             configMapKeyRef:
-              name: mra-staging-config
+              name: mra-prod-config
               key: AzureADDirectoryId
       imagePullSecrets:
         - name: acr-secret
