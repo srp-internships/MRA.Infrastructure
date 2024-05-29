@@ -246,7 +246,7 @@ spec:
             configMapKeyRef:
               key: AzureADDirectoryId
               name: mra-staging-config
-        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.56.0
+        image: silkroadprofessionals.azurecr.io/mra-web-api:v0.57.0
         imagePullPolicy: Always
         name: mra-web-api
         ports:
