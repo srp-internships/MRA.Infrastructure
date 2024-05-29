@@ -40,7 +40,7 @@ spec:
               name: mra-staging-secret
               key: jwt-secret
         - name: ASPNETCORE_ENVIRONMENT
-          value: Production
+          value: Staging
         - name: TZ
           value: Asia/Karachi
 
