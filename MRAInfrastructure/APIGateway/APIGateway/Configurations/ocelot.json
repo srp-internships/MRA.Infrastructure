@@ -110,6 +110,18 @@
       ],
       "UpstreamPathTemplate": "/pagesMetadata/{everything}",
       "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "192.168.1.17",
+          "Port": 8083
+        }
+      ],
+      "UpstreamPathTemplate": "/assets/{everything}",
+      "UpstreamHttpMethod": [  "GET", "POST", "DELETE", "PUT" ]
     }
   ]
 }
