@@ -276,7 +276,7 @@ spec:
             secretKeyRef:
               key: secretValue
               name: azure-client-secret-value
-        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.26.0
+        image: silkroadprofessionals.azurecr.io/ocelot-api-gateway:v0.27.0
         imagePullPolicy: Always
         name: ocelot-api-gateway
         ports:
